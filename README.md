@@ -17,7 +17,7 @@ You can install the released version of fars2 from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("fars2")
+install.packages("fars")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -32,7 +32,7 @@ devtools::install_github("ineszz/fars")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(fars2)
+library(fars)
 #> Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'
 #> when loading 'dplyr'
 ## basic example code

@@ -4,11 +4,12 @@
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
 ## usethis namespace: end
+if(getRversion() >= "2.15.1") utils::globalVariables(c("STATE", "MONTH", "year", "n"))
 #' @title filename
-#' @description Function to read files for fars
+#' @description Function to read files for farst
 #' @param filename  A string with the name of the csv to be loaded
 #' @return This function returns a tibble corresponding to the csv
-#' @importFrom tibble as_tibble
+#' @importFrom dplyr tbl_df
 #' @importFrom readr read_csv
 #'
 #' @examples
@@ -17,15 +18,15 @@
 #'
 fars_read <- function(filename) {
   if(!grepl("/",filename)){
-    filename <- system.file("data", filename, package="fars")
+    filename <- system.file("extdata", filename, package="fars")
   }
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
     readr::read_csv(filename, progress = FALSE)
   })
-  #dplyr::tbl_df(data)
-  tibble::as_tibble(data)
+  dplyr::tbl_df(data)
+  #tibble::as_tibble(data)
 }
 
 #' @title make_filename
@@ -40,7 +41,7 @@ fars_read <- function(filename) {
 make_filename <- function(year) {
   year <- as.integer(year)
   file<-sprintf("accident_%d.csv.bz2", year)
-  #system.file("data", file, package="fars")
+  system.file("extdata", file, package="fars")
 }
 
 #' @title fars_read_years
@@ -52,7 +53,7 @@ make_filename <- function(year) {
 #' @return This function returns a list of tibbles
 #'
 #' @examples
-#' fars_read_years(c(2013,2014,2015))
+#' fars_read_years(2013:2015)
 #' @export
 fars_read_years <- function(years) {
   lapply(years, function(year) {
@@ -60,7 +61,7 @@ fars_read_years <- function(years) {
     tryCatch({
       dat <- fars_read(file)
       dplyr::mutate(dat, year = year) %>%
-        dplyr::select_(MONTH,year)
+        dplyr::select_("MONTH","year")
     }, error = function(e) {
       warning("invalid year: ", year)
       return(NULL)
@@ -77,22 +78,25 @@ fars_read_years <- function(years) {
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr group_by
 #' @importFrom dplyr summarize
+#' @importFrom dplyr n
 #' @importFrom tidyr spread
 #' @importFrom magrittr "%>%"
+#' @importFrom rlang .data
 #'
 #' @return This function returns a tibble that summarises each of the csv
 #' iles corresponding to the \code{years}
 #'
 #' @examples
-#' fars_summarize_years(c(2013,2014,2015))
+#' fars_summarize_years(2013:2015)
 #' @export
 #'
+
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
-    dplyr::group_by_(year, MONTH) %>%
-    dplyr::summarize_(n = ~n()) %>%
-    tidyr::spread_(year, n)
+    dplyr::group_by(.data[[year]], "MONTH") %>%
+    dplyr::summarize(n = dplyr::n()) %>%
+    tidyr::spread(.data[[year]], n)
 }
 
 #' @title fars_summarize_years
@@ -115,7 +119,7 @@ fars_map_state <- function(state.num, year) {
   data <- fars_read(filename)
   state.num <- as.integer(state.num)
 
-  if(!(state.num %in% unique(STATE)))
+  if(!(state.num %in% unique(data$STATE)))
     stop("invalid STATE number: ", state.num)
   data.sub <- dplyr::filter_(data, ~STATE == state.num)
   if(nrow(data.sub) == 0L) {

@@ -18,5 +18,5 @@ summarises the number of entries in the csv files for each
 year and month in \code{years}
 }
 \examples{
-fars_summarize_years(c(2013,2014,2015))
+fars_summarize_years(2013:2015)
 }

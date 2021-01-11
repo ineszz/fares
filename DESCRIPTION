@@ -1,18 +1,17 @@
 Package: fars
-Title: fars package assignment for coursera JH
+Title: fars package assignment for 4th week of the coursera JH
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Ines",
            family = "Teaca",
            role = c("aut", "cre"),
            email = "ines.asandei@gmail.com")
-Description:This package is an assignment of coursera::JH R on Fars topic
+Description: This package is an assignment of coursera::JH R on Fars topic. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
-    tibble,
     magrittr,
     maps,
     readr,

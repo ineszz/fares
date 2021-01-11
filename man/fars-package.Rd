@@ -4,9 +4,9 @@
 \name{fars-package}
 \alias{fars}
 \alias{fars-package}
-\title{fars: fars package assignment for coursera JH}
+\title{fars: fars package assignment for 4th week of the coursera JH}
 \description{
-This package is an assignment of coursera::JH R on Fars topic
+This package is an assignment of coursera::JH R on Fars topic.
 }
 \author{
 \strong{Maintainer}: Ines Teaca \email{ines.asandei@gmail.com}

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fars2 package built for JH course
+# fars package built for JH course
 
 <!-- badges: start -->
 
@@ -11,9 +11,14 @@ status](https://travis-ci.com/ineszz/fars.svg?branch=master)](https://travis-ci.
 
 The goal of fars is to test building R packages knowedge.
 
+This vinette is writen for the package `fars` as part of week 4
+assignment of the coursera course “R packages”. The aim of this is to
+describe the functions in the package and their use cases. The packages
+consists of 5 main functions:
+
 ## Installation
 
-You can install the released version of fars2 from
+\[TBD\] You can install the released version of fars from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -37,6 +42,19 @@ library(fars)
 #> when loading 'dplyr'
 ## basic example code
 ```
+
+make\_filename(year)  
+e.g. make\_filename(2013)
+
+fars\_read(filename) e.g. fars\_read(“accident\_2013.csv.bz2”)
+
+fars\_read\_years(years)  
+e.g. fars\_read\_years(c(2013,2014,2015))
+
+fars\_summarize\_years(years)
+e.g. fars\_summarize\_years(c(2013,2014,2015))
+
+fars\_map\_state(state.num, year) e.g. fars\_map\_state(1,2013)
 
 Peer-graded Assignment
 

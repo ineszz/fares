@@ -13,7 +13,7 @@ fars_read(filename)
 This function returns a tibble corresponding to the csv
 }
 \description{
-Function to read files for fars
+Function to read files for farst
 }
 \examples{
 acc13 <- fars_read("accident_2013.csv.bz2")

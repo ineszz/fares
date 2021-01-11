@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.com/ineszz/fars.svg?branch=master)](https://travis-ci.com/ineszz/fars)
+status](https://travis-ci.com/ineszz/fars.svg?branch=main)](https://travis-ci.com/ineszz/fars)
 <!-- badges: end -->
 
 The goal of fars is to test building R packages knowedge.

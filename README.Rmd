@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.com/ineszz/fars.svg?branch=main)](https://travis-ci.com/ineszz/fars)
 <!-- badges: end -->
 
-The goal of fars is to test building R packages knowedge.
+The goal of fars  is to test building R packages knowedge.
 
 This vinette is writen for the package `fars` as part of week 4 assignment of the coursera course "R packages". The aim of this is to describe the functions in the package and their use cases. The packages consists of 5 main functions:  
  

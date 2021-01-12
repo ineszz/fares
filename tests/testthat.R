@@ -1,3 +1,5 @@
+library(testthat)
+library(fars)
 # test make_filename
 testthat::expect_identical(make_filename(2013),
                  'accident_2013.csv.bz2')

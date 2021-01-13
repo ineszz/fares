@@ -4,3 +4,7 @@ language: R
 dist: xenial
 os: linux
 cache: packages
+warnings_are_errors: false
+
+
+

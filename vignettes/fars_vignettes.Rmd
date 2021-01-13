@@ -1,0 +1,10 @@
+---
+title: "fars demo package for the JH course"
+author: "Ines T"
+date: '2021-01-12'
+output:
+  html_document:
+    df_print: paged
+vignette: |
+  %\VignetteIndexEntry{fars demo package for the JH course} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+---

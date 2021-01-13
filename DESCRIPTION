@@ -17,6 +17,7 @@ Imports:
     readr,
     tidyr,
     rlang,
+    stringr,
     testthat
 Suggests: 
     knitr,

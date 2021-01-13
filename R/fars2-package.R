@@ -75,12 +75,8 @@ fars_read_years <- function(years) {
 
 #' @param years an integer
 #'
-#' @importFrom dplyr bind_rows
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarize
-#' @importFrom dplyr n
+#' @importFrom dplyr %>% bind_rows group_by summarize n
 #' @importFrom tidyr spread
-#' @importFrom magrittr "%>%"
 #' @importFrom rlang .data
 #'
 #' @return This function returns a tibble that summarises each of the csv
@@ -94,9 +90,9 @@ fars_read_years <- function(years) {
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
-    dplyr::group_by(.data[[year]], "MONTH") %>%
-    dplyr::summarize(n = dplyr::n()) %>%
-    tidyr::spread(.data[[year]], n)
+    dplyr::group_by_("year", "MONTH") %>%
+    dplyr::summarize_(n = ~n()) %>%
+    tidyr::spread_("year", "n")
 }
 
 #' @title fars_summarize_years
